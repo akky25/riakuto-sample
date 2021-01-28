@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { Redirect, useLocation, useParams } from 'react-router-dom';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
 
 import SchoolCharacters from 'components/templates/SchoolCharacters';
 import { charactersData } from 'data/characters';
 
 const EnhancedSchoolCharacters: FC = () => {
-  const { schoolCode } = useParams<{ schoolCode: string }>();
+  const { schoolCode } = useParams();
   const schoolCodeList = Object.keys(charactersData);
 
   const { search } = useLocation();
@@ -24,7 +24,7 @@ const EnhancedSchoolCharacters: FC = () => {
     );
   }
 
-  return <Redirect to="?" />;
+  return <Navigate to="/" replace />;
 };
 
 export default EnhancedSchoolCharacters;
